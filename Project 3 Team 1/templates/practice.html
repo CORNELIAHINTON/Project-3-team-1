@@ -32,7 +32,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12" id="Artist1Pic">
-                        <img class="img-fluid" src="media/drake pic.jpg">
+                        <img class="img-fluid" src="{{url_for('static',filename='media/drake pic.jpg')}}">
                     </div>
                 </div>
                 <div class="row">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12" id="Artist2Pic">
-                        <img class="img-fluid" src="media/Justin Beiber pic.jpg">
+                        <img class="img-fluid" src="{{url_for('static',filename='media/Justin Beiber pic.jpg')}}">
                     </div>
                 </div>
                 <div class="row">
@@ -113,7 +113,7 @@
         </div>   
       </div>
       
-      <script src="js/app.js"></script>
+      <script src="{{url_for('static',filename='js/app.js')}}"></script>
 
     </body>
 </html>
