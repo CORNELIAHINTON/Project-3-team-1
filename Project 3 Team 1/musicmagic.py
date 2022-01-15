@@ -5,17 +5,6 @@
 
 
 #------------------------------------------------------------------------------------------------------------------------------
-# Install dependencies first
-#------------------------------------------------------------------------------------------------------------------------------
-# pip install requests
-# pip install psycopg2
-# pip install spotipy
-# pip install circlify
-# pip install pandas
-# pip install matplotlib
-
-
-#------------------------------------------------------------------------------------------------------------------------------
 # Import dependencies
 #------------------------------------------------------------------------------------------------------------------------------
 import re
@@ -34,8 +23,11 @@ import matplotlib.ticker as tkr
 
 from pprint import pprint
 from copy import deepcopy
+from IPython import display
 from spotipy.oauth2 import SpotifyClientCredentials
-from config import lastfm_api_key, james_db_pass
+
+
+warnings.filterwarnings("ignore")
 
 
 # In[2]:
@@ -64,7 +56,7 @@ def makeCircle(artist1,artist2):
         artist = artist1
         tot_d = {}
         limit = 10
-        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist1}&api_key={lastfm_api_key}&format=json&limit={limit}'
+        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist1}&api_key=70894b101e887cf7fd9443bd5067f675&format=json&limit={limit}'
 
         r = requests.get(urlraw)
         tmp = r.json()
@@ -98,7 +90,7 @@ def makeCircle(artist1,artist2):
         artist = artist2
         tot_d = {}
         limit = 10
-        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist2}&api_key={lastfm_api_key}&format=json&limit={limit}'
+        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist2}&api_key=70894b101e887cf7fd9443bd5067f675&format=json&limit={limit}'
 
         r = requests.get(urlraw)
         tmp = r.json()
@@ -203,7 +195,7 @@ def albumsplaycount(artist, code):
     
     try:
         limit = 10
-        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist}&api_key={lastfm_api_key}&format=json&limit={limit}'
+        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist}&api_key=70894b101e887cf7fd9443bd5067f675&format=json&limit={limit}'
 
         r = requests.get(urlraw)
         tmp = r.json()
@@ -221,6 +213,7 @@ def albumsplaycount(artist, code):
     else:
         names = list(data.keys())
         values = list(data.values())
+#         print(data)
 
         fig, ax = plt.subplots()
         
@@ -240,7 +233,7 @@ def albumsplaycount(artist, code):
     
 """gives dict of sim songs"""   
 def get_sim_songs(artist, song):
-    urlraw = f'https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist={artist}&track={song}&api_key={lastfm_api_key}&format=json'
+    urlraw = f'https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist={artist}&track={song}&api_key=70894b101e887cf7fd9443bd5067f675&format=json'
 
     dicy = {}
 
@@ -260,7 +253,7 @@ def get_sim_songs(artist, song):
 
 """gives dict of sim artists""" 
 def get_sim_artists(artist):
-    urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={artist}&api_key={lastfm_api_key}&format=json'
+    urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={artist}&api_key=70894b101e887cf7fd9443bd5067f675&format=json'
 
     dicy = {}
 
@@ -322,20 +315,18 @@ def add_more(dicy, n):
     return dicynew, pair
 
 
-def iteration(dicy0, dicy1, hist0={}, hist1={}):  
+def iteration(dicy0, dicy1, hist0={}, hist1={}, debug=False):  
     #---------------------------------------------------------
     # check if sets inital match
     #---------------------------------------------------------
-#     print('data0', len(dicy0))
-#     print('data1', len(dicy1))
-
-    resraw = match(dicy0, dicy1)
-    res = {ky: resraw[ky] for ky in list(resraw.keys())[:10]}
-#     print(res)
+    res = match(dicy0, dicy1)
 
     if len(res) >= 1:
-#         print(len(res), res)
-#         print(f'stop after add 0 pair(s)')
+        
+        if debug == True:
+            print(len(res), res)
+            print(f'stop after add 0 pair(s)')
+            
         pass
     #---------------------------------------------------------
     # expand song by song until match
@@ -377,10 +368,15 @@ def iteration(dicy0, dicy1, hist0={}, hist1={}):
                 res = match(dicy0, dicy1)
 
                 if len(res) >= 1:
-#                     print(len(res), res)
-#                     print(f'stop after add {i + 1} pair(s)')
+                    
+                    if debug == True:
+                        print(len(res), res)
+                        print(f'stop after add {i + 1} pair(s)')
+                        
                     break
 
+    res = {ky: res[ky] for ky in list(res.keys())[:10]}                
+                    
     return res, dicy0, dicy1, hist0, hist1    
 
 
@@ -389,7 +385,73 @@ def iteration(dicy0, dicy1, hist0={}, hist1={}):
 
 #------------------------------------------------------------------------------------------------------------------------------
 # high level fns
-#------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------   
+"""gives all artists with search"""    
+def search_sim_artist(artist):
+    params = {
+        'host': 'localhost',
+        'database': 'artistsbio_db',
+        'user': 'postgres',
+        'password': 'Cw18745.,'
+    }
+    conn = psycopg2.connect(**params)
+
+    with conn:
+#         sql = f"select artistname from public.glbartistbio where artistname ~* '{artist}' limit 5;"
+        sql = f"select artistname from glbartistbio where artistname ~* '{artist}' and artistname !~* 'feat|ft.|,|&'             order by playcount::int desc limit 5;"
+        
+        cur = conn.cursor()
+        cur.execute(sql)
+
+    print('ARE YOU SEARCHING FOR?')
+    for r in cur:
+        artistname = r[0]
+        print(r[0])
+
+    cur.close()
+
+    conn.commit()
+    conn.close()
+    
+    
+"""gives all artsists details with search"""
+def search_artist_bio(artist):
+    params = {
+    'host': 'localhost',
+    'database': 'artistsbio_db',
+    'user': 'postgres',
+    'password': 'Cw18745.,'
+    }
+    conn = psycopg2.connect(**params)
+
+    with conn:
+#         sql = f"select artistname from public.glbartistbio where artistname ~* '{artist}' limit 5;"
+        sql = f"select * from glbartistbio where artistname ~* '{artist}' and artistname !~* 'feat|ft.|,|&'             order by playcount::int desc limit 5;"
+        
+        cur = conn.cursor()
+        cur.execute(sql)
+
+        rec = [r for r in cur]
+        
+        cur.close()
+        
+        for i in range(len(rec)):
+#             print('-' * 100)
+            print(f"""INTRO TO YOUR ARTIST - {rec[i][1]}:
+Genres: {rec[i][2]}
+Playcounts: {int(rec[i][3]):,}
+Listeners: {int(rec[i][4]):,}
+Playcounts per listener: {rec[i][5]}
+Bio: {rec[i][6]}
+{rec[i][7]}""")
+            print()     
+    
+#     print('-' * 100)
+    
+    conn.commit()
+    conn.close()
+    
+
 """bar graph of top artist alblums"""
 def main_bars(artist0, artist1):
     color0 = '#e3122e'
@@ -421,31 +483,6 @@ def main_circles_v2(artist0, artist1):
         pass
 
 
-"""list of similar songs to two songs"""
-def main_songs(artist0, song0, artist1, song1):
-    try:
-        d0 = get_sim_songs(artist0, song0)
-    except:
-        print(f"""your artist ({artist0}) or song ({song0}) is WRONG""")
-        
-    try:
-        d1 = get_sim_songs(artist1, song1)
-    except:
-        print(f"""your artist ({artist1}) or song ({song1}) is WRONG""")
-        
-    # first iteration pair by pair
-    try:
-        res, d00, d11, h00, h11 = iteration(d0, d1)
-        
-        print(f'TOP {len(res)} SONG(S) YOU MAY ALSO LIKE:')
-        print('-' * 100)
-
-        for k in res:
-            print(f"{k.split('|')[0]} - {k.split('|')[1]}")
-    except:
-        pass
-
-    
 """list of similar artists to two artists"""
 def main_artists(artist0, artist1):
     try:
@@ -470,71 +507,30 @@ def main_artists(artist0, artist1):
     except:
         pass
     
-    
-"""gives all artists with search"""    
-def search_sim_artist(artist):
-    params = {
-        'host': 'localhost',
-        'database': 'artistsbio_db',
-        'user': 'postgres',
-        'password': james_db_pass
-    }
-    conn = psycopg2.connect(**params)
 
-    with conn:
-#         sql = f"select artistname from public.glbartistbio where artistname ~* '{artist}' limit 5;"
-        sql = f"select artistname from glbartistbio where artistname ~* '{artist}' and artistname !~* 'feat|ft.|,|&'             order by playcount::int desc limit 5;"
+"""list of similar songs to two songs"""
+def main_songs(artist0, song0, artist1, song1, debug=False):
+    try:
+        d0 = get_sim_songs(artist0, song0)
+    except:
+        print(f"""your artist ({artist0}) or song ({song0}) is WRONG""")
         
-        cur = conn.cursor()
-        cur.execute(sql)
-
-    print('ARE YOU SEARCHING FOR?')
-    for r in cur:
-        artistname = r[0]
-        print(r[0])
-
-    cur.close()
-
-    conn.commit()
-    conn.close()
-    
-    
-"""gives all artsists details with search"""
-def search_artist_bio(artist):
-    params = {
-    'host': 'localhost',
-    'database': 'artistsbio_db',
-    'user': 'postgres',
-    'password': james_db_pass
-    }
-    conn = psycopg2.connect(**params)
-
-    with conn:
-#         sql = f"select artistname from public.glbartistbio where artistname ~* '{artist}' limit 5;"
-        sql = f"select * from glbartistbio where artistname ~* '{artist}' and artistname !~* 'feat|ft.|,|&'             order by playcount::int desc limit 5;"
+    try:
+        d1 = get_sim_songs(artist1, song1)
+    except:
+        print(f"""your artist ({artist1}) or song ({song1}) is WRONG""")
         
-        cur = conn.cursor()
-        cur.execute(sql)
+    # first iteration pair by pair
+    try:
+        res, d00, d11, h00, h11 = iteration(d0, d1, debug=debug)
+        
+        print(f'TOP {len(res)} SONG(S) YOU MAY ALSO LIKE:')
+        print('-' * 100)
 
-        rec = [r for r in cur]
-        
-        cur.close()
-        
-        for i in range(len(rec)):
-#             print('-' * 100)
-            print(f"""INTRO TO YOUR ARTIST - {rec[i][1]}:
-Genres: {rec[i][2]}
-Playcounts: {int(rec[i][3]):,}
-Listeners: {int(rec[i][4]):,}
-Playcounts per listener: {rec[i][5]}
-Bio: {rec[i][6]}
-{rec[i][7]}""")
-            print()     
-    
-#     print('-' * 100)
-    
-    conn.commit()
-    conn.close()
+        for k in res:
+            print(f"{k.split('|')[0]} - {k.split('|')[1]}")
+    except:
+        pass
 
 
 # In[4]:
@@ -552,8 +548,8 @@ Bio: {rec[i][6]}
 # artist0 = "nickelback"
 # song0 = "far away"
 #------------------------------------------------------------------------------------------------------------------------------
-# artist0 = "justin bieber"
-# song0 = "baby"
+artist0 = "justin bieber"
+song0 = "peaches"
 #------------------------------------------------------------------------------------------------------------------------------
 # artist0 = 'the chainsmokers'
 # song0 = 'something just like this'
@@ -565,8 +561,8 @@ Bio: {rec[i][6]}
 # artist1 = "Nicki Minaj"
 # song1 = "anaconda"
 #------------------------------------------------------------------------------------------------------------------------------
-# artist1 = "drake"
-# song1 = "god's plan"
+artist1 = "drake"
+song1 = "one dance"
 #------------------------------------------------------------------------------------------------------------------------------
 # artist0 = 'taylor swift'
 # song0 = 'look what you made me do'
@@ -590,7 +586,7 @@ Bio: {rec[i][6]}
 
 
 if __name__ == '__main__':
-    warnings.filterwarnings("ignore")
+
     #---------------------------------------------------------------------------------------------------------------------------
     # output search results
     #---------------------------------------------------------------------------------------------------------------------------
@@ -618,7 +614,7 @@ if __name__ == '__main__':
     # output visual 3
     #---------------------------------------------------------------------------------------------------------------------------
     print('\n'+ '-' * 100 + '\n')
-    main_songs(artist0, song0, artist1, song1)
+    main_songs(artist0, song0, artist1, song1, debug=False)
     #---------------------------------------------------------------------------------------------------------------------------
     # output visual 4
     #---------------------------------------------------------------------------------------------------------------------------
