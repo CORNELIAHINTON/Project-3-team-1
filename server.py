@@ -1,24 +1,17 @@
-from flask import Flask, render_template
-from musicmagic import *
-
+from flask import Flask, jsonify, render_template, request
 app = Flask(__name__)
 
-artist0 = "psy"
-song0 = "gangnam style"
-
-artist1 = "blackpink"
-song1 = "whistle"
 
 @app.route('/')
 def index():
-  return render_template('template.html')
+    return render_template('template.html')
 
-@app.route('/my-link/')
-def my_link():
-  print ('I got clicked!')
-  x = getArtistImage(artist0)
 
-  return x
+# @app.route('/SomeFunction')
+# def SomeFunction():
+#     print('In SomeFunction')
+#     return "hello world"
+
 
 if __name__ == '__main__':
-  app.run(debug=True)
+   app.run()
