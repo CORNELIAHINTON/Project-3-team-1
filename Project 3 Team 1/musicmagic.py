@@ -5,6 +5,17 @@
 
 
 #------------------------------------------------------------------------------------------------------------------------------
+# Install dependencies first
+#------------------------------------------------------------------------------------------------------------------------------
+# pip install requests
+# pip install psycopg2
+# pip install spotipy
+# pip install circlify
+# pip install pandas
+# pip install matplotlib
+
+
+#------------------------------------------------------------------------------------------------------------------------------
 # Import dependencies
 #------------------------------------------------------------------------------------------------------------------------------
 import re
@@ -23,8 +34,8 @@ import matplotlib.ticker as tkr
 
 from pprint import pprint
 from copy import deepcopy
-from IPython import display
 from spotipy.oauth2 import SpotifyClientCredentials
+from config import lastfm_api_key, james_db_pass
 
 
 # In[2]:
@@ -53,7 +64,7 @@ def makeCircle(artist1,artist2):
         artist = artist1
         tot_d = {}
         limit = 10
-        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist1}&api_key=70894b101e887cf7fd9443bd5067f675&format=json&limit={limit}'
+        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist1}&api_key={lastfm_api_key}&format=json&limit={limit}'
 
         r = requests.get(urlraw)
         tmp = r.json()
@@ -87,7 +98,7 @@ def makeCircle(artist1,artist2):
         artist = artist2
         tot_d = {}
         limit = 10
-        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist2}&api_key=70894b101e887cf7fd9443bd5067f675&format=json&limit={limit}'
+        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist2}&api_key={lastfm_api_key}&format=json&limit={limit}'
 
         r = requests.get(urlraw)
         tmp = r.json()
@@ -192,7 +203,7 @@ def albumsplaycount(artist, code):
     
     try:
         limit = 10
-        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist}&api_key=70894b101e887cf7fd9443bd5067f675&format=json&limit={limit}'
+        urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist}&api_key={lastfm_api_key}&format=json&limit={limit}'
 
         r = requests.get(urlraw)
         tmp = r.json()
@@ -229,7 +240,7 @@ def albumsplaycount(artist, code):
     
 """gives dict of sim songs"""   
 def get_sim_songs(artist, song):
-    urlraw = f'https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist={artist}&track={song}&api_key=70894b101e887cf7fd9443bd5067f675&format=json'
+    urlraw = f'https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist={artist}&track={song}&api_key={lastfm_api_key}&format=json'
 
     dicy = {}
 
@@ -249,7 +260,7 @@ def get_sim_songs(artist, song):
 
 """gives dict of sim artists""" 
 def get_sim_artists(artist):
-    urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={artist}&api_key=70894b101e887cf7fd9443bd5067f675&format=json'
+    urlraw = f'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={artist}&api_key={lastfm_api_key}&format=json'
 
     dicy = {}
 
@@ -466,7 +477,7 @@ def search_sim_artist(artist):
         'host': 'localhost',
         'database': 'artistsbio_db',
         'user': 'postgres',
-        'password': 'Cw18745.,'
+        'password': james_db_pass
     }
     conn = psycopg2.connect(**params)
 
@@ -494,7 +505,7 @@ def search_artist_bio(artist):
     'host': 'localhost',
     'database': 'artistsbio_db',
     'user': 'postgres',
-    'password': 'Cw18745.,'
+    'password': james_db_pass
     }
     conn = psycopg2.connect(**params)
 
