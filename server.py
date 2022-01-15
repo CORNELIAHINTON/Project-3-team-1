@@ -1,7 +1,13 @@
 from flask import Flask, render_template
-import
+from musicmagic import *
 
 app = Flask(__name__)
+
+artist0 = "psy"
+song0 = "gangnam style"
+
+artist1 = "blackpink"
+song1 = "whistle"
 
 @app.route('/')
 def index():
@@ -10,8 +16,9 @@ def index():
 @app.route('/my-link/')
 def my_link():
   print ('I got clicked!')
+  x = getArtistImage(artist0)
 
-  return 'Click.'
+  return x
 
 if __name__ == '__main__':
   app.run(debug=True)
