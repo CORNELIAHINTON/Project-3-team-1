@@ -1,5 +1,4 @@
-
-// to pull the Artist bio and name
+ // to pull the Artist bio and name
 d3.selectAll("submit").on("click", function() {
     const bio_url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist="
     const api = "&api_key=f176fecb47457c92d85bf87fa002bc12&format=json"
