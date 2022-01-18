@@ -31,8 +31,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12" id="Artist1Pic">
-                        <img class="img-fluid" src="{{url_for('static',filename='media/drake pic.jpg')}}">
+                    <div class="col-12">
+                        <img class="img-fluid" src="{{url_for('static',filename='media/drake pic.jpg')}}" id="Artist1Pic">
                     </div>
                 </div>
                 <div class="row">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary mt-3" 
+                            <button type="submit" class="btn btn-primary mt-3" id="submitid"
                              data-nlok-ref-guid="e150952c-8105-440e-856d-8f9b4841f1c0">Submit</button>
                         </div>                       
                     </div>
@@ -113,7 +113,7 @@
         </div>   
       </div>
       
-      <script src="{{url_for('static',filename='js/app.js')}}"></script>
+      <script src="static/js/app.js"></script>
 
     </body>
 </html>

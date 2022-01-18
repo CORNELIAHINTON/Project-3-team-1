@@ -24,48 +24,51 @@ def home():
     return render_template("practice.html")
 
 #API route(s)
-@app.route("/api/<artist>/<title>")
+@app.route("/api/getartistinfo/<artist>")
 def get_artist_image_js(artist):
-    return getArtistImage(artist)
+    info = {
+        "image": getArtistImage(artist), 
+        "bio":"Canadian" #search_artist_bio(artist)
+        }
+    return jsonify(info)
 
-
-#search_sim_artist(artist0)
-#search_sim_artist(artist1)
-@app.route("/api/<artist>/<title>")
-def search_sim_artist_js(artist):
-    return search_sim_artist(artist)
+# #search_sim_artist(artist0)
+# #search_sim_artist(artist1)
+# @app.route("/api/<artist>/<title>")
+# def search_sim_artist_js(artist):
+#     return search_sim_artist(artist)
     
 
-#search_artist_bio(artist0)
-#search_artist_bio(artist1)
-@app.route("/api/<artist>/<title>")
-def search_artist_bio_js(artist):
-    return search_artist_bio(artist)  
+# #search_artist_bio(artist0)
+# #search_artist_bio(artist1)
+# @app.route("/api/<artist>/<title>")
+# def search_artist_bio_js(artist):
+#     return search_artist_bio(artist)  
 
 
-#main_circles_v2(artist0, artist1)
-#main_bars(artist0, artist1)
-@app.route("/api/<artist>/<title>")
-def main_circles_v2_js(artist0, artist1):
-    return main_circles_v2(artist0, artist1)
+# #main_circles_v2(artist0, artist1)
+# #main_bars(artist0, artist1)
+# @app.route("/api/<artist>/<title>")
+# def main_circles_v2_js(artist0, artist1):
+#     return main_circles_v2(artist0, artist1)
 
-#main_bars(artist0, artist1)
-#main_bars(artist0, artist1)
-@app.route("/api/<artist>/<title>")
-def main_bars_js(artist0, artist1):
-    return main_bars(artist0, artist1)
-
-
-#main_songs(artist0, song0, artist1, song1)
-@app.route("/api/<artist>/<title>")
-def main_songs_js(artist0, song0, artist1, song1):
-    return main_songs(artist0, song0, artist1, song1)
+# #main_bars(artist0, artist1)
+# #main_bars(artist0, artist1)
+# @app.route("/api/<artist>/<title>")
+# def main_bars_js(artist0, artist1):
+#     return main_bars(artist0, artist1)
 
 
-#main_artists(artist0, artist1)
-@app.route("/api/<artist>/<title>")
-def main_artists_js(artist0, artist1):
-    return main_artists(artist0, artist1)
+# #main_songs(artist0, song0, artist1, song1)
+# @app.route("/api/<artist>/<title>")
+# def main_songs_js(artist0, song0, artist1, song1):
+#     return main_songs(artist0, song0, artist1, song1)
+
+
+# #main_artists(artist0, artist1)
+# @app.route("/api/<artist>/<title>")
+# def main_artists_js(artist0, artist1):
+#     return main_artists(artist0, artist1)
 
 
 

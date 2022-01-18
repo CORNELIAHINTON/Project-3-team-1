@@ -1,12 +1,11 @@
-
-// to pull the Artist bio and name
+ // to pull the Artist bio and name
 d3.selectAll("submit").on("click", function() {
     const bio_url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist="
     const api = "&api_key=f176fecb47457c92d85bf87fa002bc12&format=json"
     var Artist1Name = document.getElementById("Artist1Name").value;
     var Artist2Name = document.getElementById("Artist2Name").value;
-    //console.log(Artist1Name)
-    //console.log(Artist2Name)
+    console.log(Artist1Name)
+    console.log(Artist2Name)
     let bio_query1 = bio_url + Artist1Name + api
     let bio_query2 = bio_url + Artist2Name + api
     console.log(query1)
@@ -23,4 +22,21 @@ d3.json(bio_query2).then((data) => {
     d3.select("Artist2Bio").text(bio2)
     })
 });
+
+
+
+
+//look for something with the ID of submitid
+d3.select("#submitid").on("click", function() {
+    let name1 = d3.select("#Artist1Name").property("value")
+    d3.json("/api/getartistinfo/" + name1).then(response => {
+        console.log(response)
+        d3.select("#Artist1Pic").attr("src", response.image)
+    })
+    let name2 = d3.select("#Artist2Name").property("value")
+    d3.json("/api/getartistinfo/" + name2).then(response => {
+        console.log(response)
+    })
+})
+
 
