@@ -1,0 +1,283 @@
+{
+  "data": [
+    {
+      "location": [
+        43.6532,
+        -79.4232
+      ],
+      "WinnerAward": "2021 Top Artist <br> 2021 Top Male Artist <br>2021 Top Hot 100 Artist <br>2021 Top Radio Songs Artist <br>2021 Top R&B Male Artist",
+      "ArtistName": "The weeknd",
+      "Hometown": "Toronto, Canada"
+    },
+    {
+      "location": [
+        40.6782,
+        -73.9442
+      ],
+      "WinnerAward": "2021 Top New Artist <br>2021 Top Rap Male Artist <br>2021 Top Billboard 200 Album-Shoot for the Stars, Aim for the Moon",
+      "ArtistName": "Pop Smoke",
+      "Hometown": "Brooklyn, New York"
+    },
+    {
+      "location": [
+        40.3337,
+        -75.9474
+      ],
+      "WinnerAward": "2021 Top Female Artis <br>2021 Top Billboard 200 Artist",
+      "ArtistName": "Taylor Swift",
+      "Hometown": "West Reading, Pennsylvania"
+    },
+    {
+      "location": [
+        37.5665,
+        126.978
+      ],
+      "WinnerAward": "2021 Top Duo/Group <br>2021 Top Song Sales Artist <br>2021 Top Social Artist <br>2020 Top Social Artist",
+      "ArtistName": "BTS",
+      "Hometown": "Seoul, South Korea"
+    },
+    {
+      "location": [
+        43.6532,
+        -79.3832
+      ],
+      "WinnerAward": "2021 Top Steaming Songs Artist",
+      "ArtistName": "Drake",
+      "Hometown": "Toronto, Ontario"
+    },
+    {
+      "location": [
+        34.0522,
+        -118.2437
+      ],
+      "WinnerAward": "2021 Top R&B Female Artist",
+      "ArtistName": "Doja Cat",
+      "Hometown": "Los Angeles, California"
+    },
+    {
+      "location": [
+        29.4241,
+        -98.4936
+      ],
+      "WinnerAward": "2021 Top Rap Female Artist",
+      "ArtistName": "Megan Thee Stallion",
+      "Hometown": "San Antonio, Texas"
+    },
+    {
+      "location": [
+        36.5298,
+        -83.2174
+      ],
+      "WinnerAward": "2021 Top Country Male Artist",
+      "ArtistName": "Morgan Wallen",
+      "Hometown": "Sneedville, Tennessee"
+    },
+    {
+      "location": [
+        40.3923,
+        -79.9
+      ],
+      "WinnerAward": "2021 Top Country Female Artist",
+      "ArtistName": "Gabby Barrett",
+      "Hometown": "Munhall, Pennsylvania"
+    },
+    {
+      "location": [
+        36.1627,
+        -86.7816
+      ],
+      "WinnerAward": "2021 Top Country Duo/Group",
+      "ArtistName": "Florida Georgia Line",
+      "Hometown": "Nashville, Tennessee"
+    },
+    {
+      "location": [
+        29.7604,
+        -95.3698
+      ],
+      "WinnerAward": "2021 Top Rock Artist",
+      "ArtistName": "Machine Gun Kelly",
+      "Hometown": "Houston, Texas"
+    },
+    {
+      "location": [
+        18.4469,
+        -66.3973
+      ],
+      "WinnerAward": "2021 Top Latin Artist <br>2021 Top Latin Male Artist <br>2020 Top Latin Artist",
+      "ArtistName": "Bad Bunny",
+      "Hometown": "Vega Baja, Puerto Rico"
+    },
+    {
+      "location": [
+        6.2476,
+        -75.5658
+      ],
+      "WinnerAward": "2021 Top Latin Female Artist",
+      "ArtistName": "Karol G",
+      "Hometown": "Medell, Colombia"
+    },
+    {
+      "location": [
+        36.7783,
+        -119.4179
+      ],
+      "WinnerAward": "2021 Top Latin Duo/Group",
+      "ArtistName": "Eslabon Armado",
+      "Hometown": "California"
+    },
+    {
+      "location": [
+        40.7831,
+        -73.9712
+      ],
+      "WinnerAward": "2021 Top Dance/Electronic Artist",
+      "ArtistName": "Lady Gaga",
+      "Hometown": "Manhattan, New York City"
+    },
+    {
+      "location": [
+        35.2271,
+        -80.8431
+      ],
+      "WinnerAward": "2021 Top Christian Artist",
+      "ArtistName": "Elevation Worship",
+      "Hometown": "Charlotte, North Carolina"
+    },
+    {
+      "location": [
+        33.749,
+        -84.388
+      ],
+      "WinnerAward": "2021 Top Gospel Artist <br> 2020 Top Gospel Artist",
+      "ArtistName": "Kanye West",
+      "Hometown": "Atlanta, Georgia"
+    },
+    {
+      "location": [
+        43.0481,
+        -76.1474
+      ],
+      "WinnerAward": "2020 Top Artist <br> 2020 Top Male Artist <br> 2020 Top Billboard 200 Artist <br> 2020 Top Hot 100 Artist <br> 2020 Top Rap Male Artist",
+      "ArtistName": "Post Malone",
+      "Hometown": "Syracuse, New York"
+    },
+    {
+      "location": [
+        34.0522,
+        -118.3237
+      ],
+      "WinnerAward": "2020 Top New Artist <br> 2020 Top Female Artis <br> 2020 Top Billboard 200 Album-When We All Fall Asleep, Where Do We Go?",
+      "ArtistName": "Billie Eilish",
+      "Hometown": "Los Angeles,California"
+    },
+    {
+      "location": [
+        41.0095,
+        -74.1729
+      ],
+      "WinnerAward": "2020 Top Duo/Group <br> 2020 Top Radio Songs Artist",
+      "ArtistName": "Jonas Brothers",
+      "Hometown": "Wyckoff, New Jersey"
+    },
+    {
+      "location": [
+        38.5226,
+        -82.7171
+      ],
+      "WinnerAward": "2020 Top Steaming Songs Artist",
+      "ArtistName": "Lil Nas X",
+      "Hometown": "Flatwoods, Kentucky"
+    },
+    {
+      "location": [
+        42.3314,
+        -83.0458
+      ],
+      "WinnerAward": "2020 Top Song Sales Artist",
+      "ArtistName": "Lizzo",
+      "Hometown": "Detroit, Michigan"
+    },
+    {
+      "location": [
+        31.8691,
+        -81.609
+      ],
+      "WinnerAward": "2020 Top R&B Male Artist",
+      "ArtistName": "Khalid",
+      "Hometown": "Fort Stewart, Georgia"
+    },
+    {
+      "location": [
+        33.749,
+        -84.42
+      ],
+      "WinnerAward": "2020 Top R&B Female Artist",
+      "ArtistName": "Summer Walker",
+      "Hometown": "Atlanta, Georgia"
+    },
+    {
+      "location": [
+        40.8448,
+        -73.9048
+      ],
+      "WinnerAward": "2020 Top Rap Female Artist",
+      "ArtistName": "Cardi B",
+      "Hometown": "Bronx borough,New York"
+    },
+    {
+      "location": [
+        35.2271,
+        -80.8431
+      ],
+      "WinnerAward": "2020 Top Country Male Artist",
+      "ArtistName": "Luke Combs",
+      "Hometown": "Charlotte, North Carolina"
+    },
+    {
+      "location": [
+        32.7357,
+        -97.1081
+      ],
+      "WinnerAward": "2020 Top Country Female Artist",
+      "ArtistName": "Maren Morris",
+      "Hometown": "Arlington, Texas"
+    },
+    {
+      "location": [
+        40.6266,
+        -80.055
+      ],
+      "WinnerAward": "2020 Top Country Duo/Group",
+      "ArtistName": "Dan + Shay",
+      "Hometown": "Wexford, Pennsylvania"
+    },
+    {
+      "location": [
+        36.1699,
+        -115.1398
+      ],
+      "WinnerAward": "2020 Top Rock Artist",
+      "ArtistName": "Panic! At The Disco",
+      "Hometown": "Las Vegas, Nevada"
+    },
+    {
+      "location": [
+        40.7128,
+        -74.006
+      ],
+      "WinnerAward": "2020 Top Dance/Electronic Artist",
+      "ArtistName": "The Chainsmokers",
+      "Hometown": "New York City, New York"
+    },
+    {
+      "location": [
+        30.2241,
+        -92.0198
+      ],
+      "WinnerAward": "2020 Top Christian Artist",
+      "ArtistName": " Lauren Daigle",
+      "Hometown": "Lafayette, Louisiana"
+    }
+  ]
+}

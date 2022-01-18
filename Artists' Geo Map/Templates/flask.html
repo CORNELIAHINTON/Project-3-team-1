@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <title>Billboard Top Artist</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <h1>
+    Let's show two periods artists
+  </h1>
+
+  <div id="map" style="height: 80vh;"></div>
+
+  <script>
+    var map=L.map('map').setView([37.0902,-95.7129],5)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map)
+    axios.get('http://localhost:5000/first').then(response=>{
+      console.log(response.data)
+      for (var i=0; i < response.data.length; i++){
+              console.log(response.data[i]);
+
+              let newdata=response.data[i];
+              var geo=newdata.coordinates;
+              //console.log(geo);
+
+              L.marker(newdata.coordinates).bindPopup(`<h1>${response.data[i].ArtistName}</h1> <hr> <h3> ${response.data[i].WinnerAwards}</h3><br>
+                ${response.data[i].Hometown}`).addTo(map);
+            }
+     })
+
+  </script>
+  
+</body>
+
+</html>
