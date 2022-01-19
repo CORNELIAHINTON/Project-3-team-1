@@ -24,13 +24,13 @@ def home():
     return render_template("practice.html")
 
 #API route(s)
-@app.route("/api/getartistinfo/<artist>")
+@app.route("/api/getartistimage/<artist>")
 def get_artist_image_js(artist):
     info = {
-        "image": getArtistImage(artist), 
-        "bio":"Canadian" #search_artist_bio(artist)
+        "image": getArtistImage(artist),  
         }
     return jsonify(info)
+
 
 # #search_sim_artist(artist0)
 # #search_sim_artist(artist1)

@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label class="col-form-label col-form-label-lg mt-4" for="Artist1Name">Artist 1</label>
-                            <input class="form-control form-control-lg" type="text" placeholder="Drake" id="Artist1Name">
+                            <input class="form-control form-control-lg" type="text" placeholder="Name" id="Artist1Name">
                           </div>
                     </div>
                 </div>
@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 overflow-auto" id="Artist1Bio">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nobis soluta repudiandae corrupti similique vero quas magnam, vel ipsam mollitia modi. Iste ut laudantium placeat incidunt nostrum illum explicabo ex.</p>
+                    <div class="col-12 overflow-auto" >
+                        <p id="Artist1Bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nobis soluta repudiandae corrupti similique vero quas magnam, vel ipsam mollitia modi. Iste ut laudantium placeat incidunt nostrum illum explicabo ex.</p>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <!--This is more space for graphs-->
                 <div class="row">
                     <div class="col-4">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">>
                         <div class="card-header">Genres</div>
                         <div class="card-body">
                           <h4 class="card-title">Dark card title</h4>
@@ -105,8 +105,8 @@
                         <h6>Not the artist you're looking for?</h6>
                         <p>Try: </p>
                     </div>
-                    <div class="col-4 text-centered mt 3" id="playsovertime">
-                        <p>Graph goes here</p>
+                    <div class="col-4 text-centered mt 3" >
+                        <p id="playsovertime">Graph goes here</p>
                     </div>
                     <div class="col-4">
                         <h6>Not the artist you're looking for?</h6>
@@ -120,7 +120,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label class="col-form-label col-form-label-lg mt-4" for="Artist2Name">Artist 2</label>
-                            <input class="form-control form-control-lg" type="text" placeholder="Justin Beiber" id="Artist2Name">
+                            <input class="form-control form-control-lg" type="text" placeholder="Name" id="Artist2Name">
                           </div>
                     </div>
                 </div>
@@ -133,20 +133,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12" id="Artist2Pic">
-                        <img class="img-fluid" src="{{url_for('static',filename='media/Justin Beiber pic.jpg')}}">
+                    <div class="col-12" >
+                        <img class="img-fluid" src="{{url_for('static',filename='media/Justin Beiber pic.jpg')}}" id="Artist2Pic">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 overflow-auto" id="Artist2Bio">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nobis soluta repudiandae corrupti similique vero quas magnam, vel ipsam mollitia modi. Iste ut laudantium placeat incidunt nostrum illum explicabo ex.</p>
+                    <div class="col-12 overflow-auto" >
+                        <p id="Artist2Bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nobis soluta repudiandae corrupti similique vero quas magnam, vel ipsam mollitia modi. Iste ut laudantium placeat incidunt nostrum illum explicabo ex.</p>
                     </div>
                 </div>
             </div>
         </div>   
       </div>
       
-      <script src="static/js/app.js"></script>
+      <script src="{{url_for('static', filename='js/app.js')}}"></script>
 
     </body>
 </html>
